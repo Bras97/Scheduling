@@ -13,34 +13,44 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        InstancesCreator creator = new InstancesCreator();
-        creator.create();
+        //InstancesCreator creator = new InstancesCreator();
+        //creator.create();
+
+
+        FilesList filesList = new FilesList();
+        List<String> files = filesList.run();
 
 
         DataLoader loader = new DataLoader();
-        List<Task> parameters = loader.load(TASKSNUMBER, "data/in132349_" + TASKSNUMBER + ".txt");
+        for(String file: files)
+        {
+            System.out.println(file);
 
-        DelayCounter delayCounter = new DelayCounter();
+            //List<Task> parameters = loader.load(TASKSNUMBER, "data/in132349_" + TASKSNUMBER + ".txt");
+            List<Task> parameters = loader.load(TASKSNUMBER, file);
 
-        //LIST ALGORITHM
-        ListAlgorithm listAlgorithm = new ListAlgorithm();
-        startMeasure = System.nanoTime();
-        List<List<Task>> listAlgorithmResult = listAlgorithm.run(parameters);
-        endMeasure = System.nanoTime();
-        delay = delayCounter.run(listAlgorithmResult);
-        System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR LIST: " + delay);
+            DelayCounter delayCounter = new DelayCounter();
 
-        //SORT ALGORITHM
-        SortAlgorithm sortAlgorithm = new SortAlgorithm();
-        startMeasure = System.nanoTime();
-        List<List<Task>> sortAlgorithmResult = sortAlgorithm.run(parameters);
-        endMeasure = System.nanoTime();
-        delay = delayCounter.run(sortAlgorithmResult);
-        System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR SORT: " + delay);
+            //LIST ALGORITHM
+            NaiveAlgorithm naiveAlgorithm = new NaiveAlgorithm();
+            startMeasure = System.nanoTime();
+            List<List<Task>> listAlgorithmResult = naiveAlgorithm.run(parameters);
+            endMeasure = System.nanoTime();
+            delay = delayCounter.run(listAlgorithmResult);
+            System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR LIST: " + delay);
+
+            //SORT ALGORITHM
+//            SortAlgorithm sortAlgorithm = new SortAlgorithm();
+//            startMeasure = System.nanoTime();
+//            List<List<Task>> sortAlgorithmResult = sortAlgorithm.run(parameters);
+//            endMeasure = System.nanoTime();
+//            delay = delayCounter.run(sortAlgorithmResult);
+//            System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR SORT: " + delay);
 
 
 
-        DataSaver dataSaver = new DataSaver();
-        dataSaver.save("results/out132349_" + TASKSNUMBER + ".txt", sortAlgorithmResult, delay);
+//            DataSaver dataSaver = new DataSaver();
+//            dataSaver.save("results/" + file, sortAlgorithmResult, delay);
+        }
     }
 }

@@ -17,6 +17,7 @@ public class DataLoader
             String line = reader.readLine();
             String[] data = new String[3];
             int row = 0;
+            line = reader.readLine();
             while (line != null) {
                 //System.out.println(line);
                 data = line.split(" ");

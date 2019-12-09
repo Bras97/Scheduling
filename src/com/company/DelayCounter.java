@@ -13,7 +13,7 @@ public class DelayCounter
             for (Task task: machines.get(i))
                 try {
                     //System.out.println(currentTime + " " + machines[i][j].number + " [" + machines[i][j].duration + ", " + machines[i][j].maxDelay + "] ");
-                    System.out.print(task.number + " ");
+                    //System.out.print(task.number + " ");
                     if (currentTime < task.startTime)
                         currentTime = task.startTime;
                     currentTime += task.duration;
@@ -23,7 +23,7 @@ public class DelayCounter
                 } catch (Exception e) {
                 }
 
-            System.out.println();
+            //System.out.println();
         }
         //System.out.println(delay);
 

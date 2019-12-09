@@ -12,12 +12,12 @@ public class Verifier
         DataLoader loader = new DataLoader();
 //        Task[] parameters = loader.load(TASKSNUMBER, inputPath);
 //
-//        ListAlgorithm listAlgorithm = new ListAlgorithm();
+//        NaiveAlgorithm listAlgorithm = new NaiveAlgorithm();
 //
 //        long start = System.nanoTime();
 //        Task[][] machines = listAlgorithm.run(TASKSNUMBER, parameters);
 //        long end = System.nanoTime();
-//        System.out.println("ListAlgorithm takes " + (end - start)/1000 + "us");
+//        System.out.println("NaiveAlgorithm takes " + (end - start)/1000 + "us");
 //        int delay = listAlgorithm.countDelay(TASKSNUMBER, machines);
 //
 //

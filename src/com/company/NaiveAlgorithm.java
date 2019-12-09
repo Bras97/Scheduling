@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListAlgorithm
+public class NaiveAlgorithm
 {
     public List<List<Task>> run(List<Task> parameters)
     {

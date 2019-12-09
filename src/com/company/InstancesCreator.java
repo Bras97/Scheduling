@@ -16,7 +16,7 @@ public class InstancesCreator {
         for(int tasksNumber=50; tasksNumber<=500; tasksNumber+=50)
         {
 
-            String file = "";
+            String file = tasksNumber + "\n";
             int rj[] = new int[tasksNumber];
             int pj[] = new int[tasksNumber];
             int dj[] = new int[tasksNumber];
