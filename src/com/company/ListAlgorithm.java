@@ -19,15 +19,15 @@ public class ListAlgorithm {
         {
             if(mini>parameters.get(i).startTime)
             {
-                miniSpan = parameters.get(i).startTime + parameters.get(i).duration;
+                miniSpan = parameters.get(i).maxDelay - parameters.get(i).duration - parameters.get(i).startTime;
                 mini = parameters.get(i).startTime;
                 miniI = i;
             }
             else if(mini==parameters.get(i).startTime)
             {
-                if (miniSpan > (parameters.get(i).startTime + parameters.get(i).duration))
+                if (miniSpan > (parameters.get(i).maxDelay- parameters.get(i).duration - parameters.get(i).startTime))
                 {
-                    miniSpan = parameters.get(i).startTime + parameters.get(i).duration;
+                    miniSpan = parameters.get(i).maxDelay- parameters.get(i).duration - parameters.get(i).startTime;
                     miniI = i;
                 }
             }

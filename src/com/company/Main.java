@@ -25,11 +25,10 @@ public class Main {
         int showPath =0;
         for(String file: files)
         {
-            if(showPath==0)
-                System.out.println(file);
-            showPath++;
-            if (showPath==10) showPath=0;
-
+//            if(showPath==0)
+//                System.out.println(file);
+//            showPath++;
+//                    if(showPath==10) showPath=0;
             //List<Task> parameters = loader.load(TASKSNUMBER, "data/in132349_" + TASKSNUMBER + ".txt");
             List<Task> parameters = loader.load(TASKSNUMBER, file);
 
@@ -43,6 +42,7 @@ public class Main {
             delay = delayCounter.run(listAlgorithmResult);
             //System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR LIST: " + delay);
             System.out.println(delay);
+
 
 
             //NAIVE ALGORITHM
