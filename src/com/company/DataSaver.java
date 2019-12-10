@@ -9,6 +9,7 @@ public class DataSaver
 {
     public void save(String path, List<List<Task>> machines, int delay) throws IOException
     {
+        path = path.replace("results/data\\in", "results/data\\out");
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 
         writer.write(Integer.toString(delay) + "\n");

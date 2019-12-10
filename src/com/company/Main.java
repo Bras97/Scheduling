@@ -22,22 +22,36 @@ public class Main {
 
 
         DataLoader loader = new DataLoader();
+        int showPath =0;
         for(String file: files)
         {
-            System.out.println(file);
+            if(showPath==0)
+                System.out.println(file);
+            showPath++;
+            if (showPath==10) showPath=0;
 
             //List<Task> parameters = loader.load(TASKSNUMBER, "data/in132349_" + TASKSNUMBER + ".txt");
             List<Task> parameters = loader.load(TASKSNUMBER, file);
 
             DelayCounter delayCounter = new DelayCounter();
 
-            //LIST ALGORITHM
-            NaiveAlgorithm naiveAlgorithm = new NaiveAlgorithm();
+            //NAIVE ALGORITHM
+            ListAlgorithm listAlgorithm = new ListAlgorithm();
             startMeasure = System.nanoTime();
-            List<List<Task>> listAlgorithmResult = naiveAlgorithm.run(parameters);
+            List<List<Task>> listAlgorithmResult = listAlgorithm.run(parameters);
             endMeasure = System.nanoTime();
             delay = delayCounter.run(listAlgorithmResult);
-            System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR LIST: " + delay);
+            //System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR LIST: " + delay);
+            System.out.println(delay);
+
+
+            //NAIVE ALGORITHM
+//            NaiveAlgorithm naiveAlgorithm = new NaiveAlgorithm();
+//            startMeasure = System.nanoTime();
+//            List<List<Task>> listAlgorithmResult = naiveAlgorithm.run(parameters);
+//            endMeasure = System.nanoTime();
+//            delay = delayCounter.run(listAlgorithmResult);
+//            System.out.println("(" + (endMeasure-startMeasure)/1000 + "ms) RESULT FOR LIST: " + delay);
 
             //SORT ALGORITHM
 //            SortAlgorithm sortAlgorithm = new SortAlgorithm();
@@ -49,8 +63,8 @@ public class Main {
 
 
 
-//            DataSaver dataSaver = new DataSaver();
-//            dataSaver.save("results/" + file, sortAlgorithmResult, delay);
+            DataSaver dataSaver = new DataSaver();
+            dataSaver.save("results/" + file, listAlgorithmResult, delay);
         }
     }
 }
